@@ -180,7 +180,7 @@ class PayPalController extends Controller
             //dd('Your payment was successfully - inv-'.$inv_id.' You can create success page here.');
             // dd($response);
             //(in_array(strtoupper($response['ACK']), ['SUCCESS', 'SUCCESSWITHWARNING']));
-            return view('payments.success', compact('response');
+            return view('payments.success', compact('response'));
         }
         else
         {
