@@ -56,15 +56,5 @@
 <script src="{{ asset('colorAdmin/plugins/sweetalert/dist/sweetalert.min.js')}}"></script>
 <script src="{{ asset('colorAdmin/js/demo/ui-modal-notification.demo.js')}}"></script>
 <!-- ================== END PAGE LEVEL JS ================== -->
-
-<script>
-    $('.delete-user').click(function(e){
-         e.preventDefault() // Don't post the form, unless confirmed
-         if (confirm('Are you sure?')) {
-             // Post the form
-             $(e.target).closest('form').submit() // Post the surrounding form
-         }
-    });
-</script>
 @endsection
 

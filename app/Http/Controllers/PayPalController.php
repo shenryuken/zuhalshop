@@ -13,6 +13,8 @@ use App\Models\Order;
 use App\Models\Invoice;
 use App\Models\Product;
 use App\Models\Payment;
+use App\Models\Wallet;
+
 use Auth;
 
 class PayPalController extends Controller
@@ -176,6 +178,14 @@ class PayPalController extends Controller
             $order->payment_status = 'Success';
             $order->save();
 
+            $referrer = auth()->user()->referrer;
+
+            // Bonus sale to 
+            $bonus    = $invoice->total_amount * 0.1;
+
+            $wallet = Wallet::where('user_id', $referrer->id )->first();
+            $wallet->sale_bonus = $wallet->sale_bonus + $bonus;
+            $wallet->save();
 
             //dd('Your payment was successfully - inv-'.$inv_id.' You can create success page here.');
             // dd($response);

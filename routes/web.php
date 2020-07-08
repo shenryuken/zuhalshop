@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 })->name('/');
 
+Route::post('notifyme', 'NotifymeController@notifyme');
+
 Auth::routes();
 
 //Banks
