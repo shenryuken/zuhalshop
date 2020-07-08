@@ -181,11 +181,15 @@ class PayPalController extends Controller
             $referrer = auth()->user()->referrer;
 
             // Bonus sale to 
-            $bonus    = $invoice->total_amount * 0.1;
+            if($referrer)
+            {
+                 $bonus    = $invoice->total_amount * 0.1;
 
-            $wallet = Wallet::where('user_id', $referrer->id )->first();
-            $wallet->sale_bonus = $wallet->sale_bonus + $bonus;
-            $wallet->save();
+                    $wallet = Wallet::where('user_id', $referrer->id )->first();
+                    $wallet->sale_bonus = $wallet->sale_bonus + $bonus;
+                    $wallet->save();
+            }
+           
 
             //dd('Your payment was successfully - inv-'.$inv_id.' You can create success page here.');
             // dd($response);
