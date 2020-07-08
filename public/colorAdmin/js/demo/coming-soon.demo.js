@@ -7,7 +7,7 @@ Website: http://www.seantheme.com/color-admin/admin/
 
 var handleCountdownTimer = function() {
 	var newYear = new Date();
-	newYear = new Date(newYear.getFullYear() + 1, 1 - 1, 1);
+	newYear = new Date("07/13/2020");
 	$('#timer').countdown({until: newYear});
 };
 
