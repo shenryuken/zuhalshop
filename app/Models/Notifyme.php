@@ -12,6 +12,6 @@ class Notifyme extends Model
      * @var array
      */
     protected $fillable = [
-        'email',
+        'fullname','email',
     ];
 }

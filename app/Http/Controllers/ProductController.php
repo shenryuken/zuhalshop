@@ -118,4 +118,20 @@ class ProductController extends Controller
 
         return view('products/buynow', compact('product'));
     }
+
+    public function promolink($id, $ref = null)
+    {
+        $product = Product::find($id);
+        
+        // if($ref)
+        // {
+        //     $referrer = User::where('username', $ref)->first();
+
+        //     $bonus_sale = $product->price * 0.1;
+
+        //     $wallet = Wallet::where('user_id', $referrer->id)->first()
+        // }
+
+        return view('products.promolink', compact('product', 'ref'));
+    }
 }

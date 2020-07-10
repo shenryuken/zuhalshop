@@ -49,6 +49,7 @@ Route::post('profiles/account', 'AccountController@store');
 Route::get('wallets/mywallet', 'WalletController@mywallet');
 //END Wallets
 //Products
+
 Route::get('products/create', 'ProductController@create');
 Route::get('products/cards', 'ProductController@cards');
 Route::get('products', 'ProductController@index');
@@ -57,7 +58,10 @@ Route::post('products', 'ProductController@store')->name('products');
 Route::put('products/{id}', 'ProductController@update');
 Route::get('products/{id}', 'ProductController@show');
 Route::get('products/buynow/{id}', 'ProductController@buyNow');
-Route::get('product/payments', 'PaymentController@payment');
+Route::get('products/{id}/promo{ref?}', 'ProductController@promolink');
+Route::get('products/{id}');
+// Route::get('product/payments', 'PaymentController@payment');
+
 //END Products
 //Invoices
 Route::get('invoices/checkout', 'InvoiceController@checkout');
