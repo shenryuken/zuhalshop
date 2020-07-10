@@ -42,7 +42,8 @@
 				<!-- begin register-header -->
 				<h1 class="register-header">
 					Sign Up
-					<small>Create your Color Admin Account. It’s free and always will be.</small>
+					<small>We are launching a closed <b>beta</b> soon!<br /> Sign up to try it before others and be the first to know when we <b>launch</b>.</small>
+					<small>Create your Zuhal Account. It’s free (without extra benefit) and always will be.</small>
 				</h1>
 				<!-- end register-header -->
 				<!-- begin register-content -->

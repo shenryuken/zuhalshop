@@ -10,10 +10,11 @@ class NotifymeController extends Controller
     public function notifyme(Request $request)
     {
     	$notify = new Notifyme;
-    	$notify->email = $request->email;
+    	$notify->fullname 	= $request->fullname;
+    	$notify->email 		= $request->email;
     	$notify->save();
 
     	//return view('welcome', compact('notify'))->with('success', 'Your email successfully submited');
-    	return redirect()->back()->with('success', 'Your email successfully submited');
+    	return redirect()->back()->with('success', "Your email successfully submited");
     }
 }
