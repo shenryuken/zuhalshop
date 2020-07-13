@@ -510,6 +510,7 @@
                         </div>
                     </div>
                     <div class="pricing-thumb">
+                        <img src="{{asset('landingpage/images/1.png')}}" class="img-responsive" alt="StarterPack">
                         <div class="pricing-title">
                             <h2>ZUHAL Healthy</h2>
                         </div>
@@ -536,6 +537,7 @@
                         </div>
                     </div>
                     <div class="pricing-thumb">
+                        <img src="{{asset('landingpage/images/3.png')}}" class="img-responsive" alt="StarterPack">
                         <div class="pricing-title">
                             <h2>Entrepreneur Startup</h2>
                         </div>
@@ -562,6 +564,7 @@
                         </div>
                     </div>
                     <div class="pricing-thumb">
+                        <img src="{{asset('landingpage/images/7.png')}}" class="img-responsive" alt="StarterPack">
                         <div class="pricing-title">
                             <h2>Enterprise Package</h2>
                         </div>
@@ -588,6 +591,7 @@
                         </div>
                     </div>
                     <div class="pricing-thumb">
+                        <img src="{{asset('landingpage/images/50.png')}}" class="img-responsive" alt="StarterPack">
                         <div class="pricing-title">
                             <h2>Business Package</h2>
                         </div>
