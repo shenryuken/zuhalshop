@@ -17,9 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 })->name('/');
 
-Route::post('notifyme', 'NotifymeController@notifyme');
 
-Auth::routes();
+
+// Auth::routes();
+Auth::routes(['verify' => true]);
+Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+
+Route::post('notifyme', 'NotifymeController@notifyme');
 
 //Banks
 Route::get('banks', 'BankController@index');
@@ -28,7 +32,7 @@ Route::post('banks', 'BankController@store')->name('banks');
 //END Bank
 Route::get('members', 'UserController@index');
 
-Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+
 //Referral
 Route::get('/referral-link', 'HomeController@referral');
 Route::get('/referrals', 'HomeController@referrals');

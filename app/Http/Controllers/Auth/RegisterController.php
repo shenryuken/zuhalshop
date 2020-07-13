@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+use DB;
+use Auth;
 use App\User;
 use App\Models\Wallet;
 
@@ -70,33 +72,40 @@ class RegisterController extends Controller
     {
         $introducer = User::where('name', $data['referred_by'])->first();
 
-        try {
-            // $user = User::create([
-            //     'name' => $data['name'],
-            //     'email' => $data['email'],
-            //     'password' => Hash::make($data['password']),
-            //     'country_id' => $data['country_id'],
-            //     'referred_by' => $introducer ? $introducer->id:0,
-            // ]);
+        // $user = User::create([
+        //     'name' => $data['name'],
+        //     'email' => $data['email'],
+        //     'password' => Hash::make($data['password']),
+        //     'country_id' => $data['country_id'],
+        //     'referred_by' => $introducer ? $introducer->id:0,
+        // ]);
 
-            $user = new User;
-            $user->name = $data['name'];
-            $user->email = $data['email'];
-            $user->password = Hash::make($data['password']);
-            $user->country_id = $data['country_id'];
-            $user->referred_by =  $introducer ? $introducer->id:0;
-            $user->save();
+        // Start transaction
+        DB::beginTransaction();
 
-            $wallet = new Wallet;
-            $wallet->user_id = $user->id;
-            $user->wallet()->save($wallet);
+        $user = new User;
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->password = Hash::make($data['password']);
+        $user->country_id = $data['country_id'];
+        $user->referred_by =  $introducer ? $introducer->id:0;
+        $user->save();
 
-            return $user;
-        } 
-        catch (Exception $e) 
+        $wallet = new Wallet;
+        $wallet->user_id = $user->id;
+        $user->wallet()->save($wallet);
+
+        if(!$user || !$wallet)
         {
-            report($e);
-            return false;
+            DB::rollback();
         }
+        else
+        {
+            // Else commit the queries
+            DB::commit();
+        }
+
+        return $user;
+        //return redirect()->back()->with('error', 'Something wrong! Please check your input.');
     }
 }
