@@ -523,7 +523,7 @@
                         </div>
                             <div class="pricing-bottom">
                             <span class="pricing-dollar">RM200</span>
-                                 <a href="#" class="section-btn pricing-btn">Buy</a>
+                                 <a href="{{url('products/1/promo')}}" class="section-btn pricing-btn">Buy</a>
                             </div>
                         </div>
                 </div>
@@ -550,7 +550,7 @@
                         </div>
                         <div class="pricing-bottom">
                             <span class="pricing-dollar">RM540</span>
-                            <a href="#" class="section-btn pricing-btn">Buy</a>
+                            <a href="{{url('products/2/promo')}}"   class="section-btn pricing-btn btn disabled">Buy</a>
                         </div>
                     </div>
                 </div>
@@ -577,7 +577,7 @@
                         </div>
                         <div class="pricing-bottom">
                             <span class="pricing-dollar">RM1260</span>
-                            <a href="#" class="section-btn pricing-btn">Buy</a>
+                            <a href="{{url('products/3/promo')}}" class="section-btn pricing-btn btn disabled">Buy</a>
                         </div>
                     </div>
                 </div>
@@ -604,7 +604,7 @@
                         </div>
                         <div class="pricing-bottom">
                             <span class="pricing-dollar">RM5000</span>
-                            <a href="#" class="section-btn pricing-btn">Buy</a>
+                            <a href="{{url('products/4/promo')}}" class="section-btn pricing-btn">Buy</a>
                         </div>
                     </div>
                 </div>
