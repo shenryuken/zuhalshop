@@ -134,4 +134,19 @@ class ProductController extends Controller
 
         return view('products.promolink', compact('product', 'ref'));
     }
+
+    public function show($id)
+    {
+        $product = Product::find($id);
+
+        return view('products.show', compact('product'));
+    }
+
+    public function destroy($id)
+    {
+        $product = Product::find($id);
+        $product->delete();
+
+        return redirect()->back()->with('success', 'Successfully delete the item');
+    }
 }

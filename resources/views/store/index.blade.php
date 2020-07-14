@@ -36,7 +36,12 @@
             		<button type="submit" class="btn btn-sm btn-success">Buy Now</button>
             	</form> --}}
                 {{-- <a href="{{url('products/buynow/'.$product->id)}}" class="btn btn-sm btn-success">Buy Now</a> --}}
-                <a href="{{ route('buynow',$product->id) }}" class="btn btn-sm btn-success">Paypal Buy Now</a>
+                {{-- <a href="{{ route('buynow',$product->id) }}" class="btn btn-sm btn-success">Paypal Buy Now</a> --}}
+                @if($product->id == 2 || $product->id == 3)
+
+                @else
+                <a href="{{url('products/'.$product->id.'/promo')}}" class="section-btn pricing-btn btn btn-sm btn-primary ">Buy</a>
+                @endif
                 <a href="{{ route('add', [ $product->getRouteKey() ]) }}" class="btn btn-sm btn-grey">Add To Cart</a> 
                 @if(Auth::user()->isAdmin())
                 <a href="{{url('products/'.$product->id.'/edit')}}" class="btn btn-sm btn-warning float-right">Edit</a>

@@ -72,7 +72,7 @@
                     @if (Route::has('login'))
                         
                         @auth
-                            <li><a href="{{ url('/dashboard') }}">Home</a></li>
+                            <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
                         @else
                             <li><a href="{{ route('login') }}">Login</a></li>
 
@@ -523,7 +523,7 @@
                         </div>
                             <div class="pricing-bottom">
                             <span class="pricing-dollar">RM200</span>
-                                 <a href="{{url('products/1/promo')}}" class="section-btn pricing-btn">Buy</a>
+                                <a href="{{url('products/1/promo')}}" class="section-btn pricing-btn">Buy</a>
                             </div>
                         </div>
                 </div>
@@ -577,7 +577,7 @@
                         </div>
                         <div class="pricing-bottom">
                             <span class="pricing-dollar">RM1260</span>
-                            <a href="{{url('products/3/promo')}}" class="section-btn pricing-btn btn disabled">Buy</a>
+                            <a href="{{url('products/3/promo')}}" class="section-btn pricing-btn btn">Buy</a>
                         </div>
                     </div>
                 </div>
