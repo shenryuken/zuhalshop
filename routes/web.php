@@ -64,6 +64,7 @@ Route::get('products/{id}', 'ProductController@show');
 Route::get('products/{id}/details', 'ProductController@details')->name('product-details');
 Route::get('products/buynow/{id}', 'ProductController@buyNow');
 Route::get('products/{id}/promo{ref?}', 'ProductController@promolink');
+Route::delete('products/{id}', 'ProductController@destroy');
 // Route::get('product/payments', 'PaymentController@payment');
 
 //END Products
