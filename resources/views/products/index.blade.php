@@ -41,6 +41,11 @@
                 </ul>
             </div>
         @endif
+        @if(session('success'))
+            <div class="alert alert-success">
+                {!! session('success') !!}
+            </div>
+        @endif
 
         <br>
         <a href="{{url('products/create')}}" class="btn btn-primary">Add Product</a>

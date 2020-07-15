@@ -41,6 +41,11 @@
                 </ul>
             </div>
         @endif
+        @if(session('success'))
+            <div class="alert alert-success">
+                {!! session('success') !!}
+            </div>
+        @endif
 
         <br>
         <a href="{{url('banks/create')}}" class="btn btn-primary">Add Bank</a>
@@ -71,10 +76,15 @@
                     <td>{{$row->short_code}}</td>
                     <td>{{$row->status}}</td>
                     <td>{{$row->country->name}}</td>
-                    <td>
-                        {{-- <button onclick="window.location='{{ url("profiles/".$row->id) }}'" class="btn-sm btn-gray">Show</button>
-                        <button wire:click="edit({{$row->id}})" class="btn-sm btn-primary">Edit</button> 
-                        <button onclick="confirm('Are you sure you want to remove the user from this list?') || event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})" class="btn-sm btn-danger">Delete</button> --}}
+                    <td class="row pl-5">
+                        {{-- <button onclick="window.location='{{ url("banks/".$row->id) }}'" class="m-5 btn-sm btn-gray">Show</button> --}}
+                        <button onclick="window.location='{{ url("banks/".$row->id."/edit") }}'" class="m-5 btn-sm btn-primary">Edit</button> 
+                            
+                        <form id="delete-form" method="POST" action="{{url('banks/'.$row->id)}}" class="delete-bank">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
+                            <input type="submit" class="btn-sm btn-danger m-5" value="Delete">
+                        </form>
                     </td>
                 </tr>
             @endforeach
@@ -120,7 +130,7 @@
 	<!-- ================== END PAGE LEVEL JS ================== -->
 
 	<script>
-	    $('.delete-user').click(function(e){
+	    $('.delete-bank').click(function(e){
 	         e.preventDefault() // Don't post the form, unless confirmed
 	         if (confirm('Are you sure?')) {
 	             // Post the form
