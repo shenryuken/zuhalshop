@@ -29,6 +29,9 @@ Route::post('notifyme', 'NotifymeController@notifyme');
 Route::get('banks', 'BankController@index');
 Route::get('banks/create', 'BankController@create');
 Route::post('banks', 'BankController@store')->name('banks');
+Route::get('banks/{id}/edit', 'BankController@edit');
+Route::put('banks/{id}', 'BankController@update');
+Route::delete('banks/{id}', 'BankController@destroy');
 //END Bank
 Route::get('members', 'UserController@index');
 

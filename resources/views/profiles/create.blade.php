@@ -21,7 +21,11 @@
                 </div><br />
             @endif
         </div>
-        
+        @if(session('success'))
+            <div class="alert alert-success">
+                {!! session('success') !!}
+            </div>
+        @endif
         <div class="col-lg-8 order-lg-1 personal-info">
             <form role="form" action="{{url('profiles')}}" enctype="multipart/form-data" method="Post">
                 @csrf
