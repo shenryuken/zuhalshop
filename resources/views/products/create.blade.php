@@ -63,10 +63,11 @@
 								    <input type="text" name="price" class="form-control" placeholder=""/>
 								 </div>
 							</div>
+							
 							<div class="form-group row m-b-15">
-							  	<label class="col-md-3 col-form-label">Cost Price</label>
+							  	<label class="col-md-3 col-form-label">Paypal Code</label>
 							  	<div class="col-md-2">
-								    <input type="text" name="cost_price" class="form-control" placeholder=""/>
+								    <input type="text" name="paypal_code" class="form-control" placeholder=""/>
 								 </div>
 							</div>
 							<div class="form-group row m-b-15">

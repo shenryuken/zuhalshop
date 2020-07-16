@@ -47,6 +47,7 @@ class ProductController extends Controller
     		'sku'		=> 'required',
     		'price'		=> 'required',
     		'cost_price'=> 'required',
+            'paypal_code' => '',
     		'instock'	=> '',
     		'type'		=> 'required',
     		'image' 	=> 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -63,6 +64,7 @@ class ProductController extends Controller
     	$product->sku 	= $request->sku;
     	$product->price = $request->price;
     	$product->cost_price = $request->cost_price;
+        $product->paypal_code= $request->paypal_code;
     	$product->instock 	 = $request->instock;
     	$product->type 	= $request->type;
     	$product->image = $path;
@@ -86,6 +88,7 @@ class ProductController extends Controller
             'sku'       => 'required',
             'price'     => 'required',
             'cost_price'=> 'required',
+            'paypal_code' => '',
             'instock'   => '',
             'type'      => 'required',
             'image'     => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -104,6 +107,7 @@ class ProductController extends Controller
         $product->sku   = $request->sku;
         $product->price = $request->price;
         $product->cost_price = $request->cost_price;
+        $product->paypal_code= $request->paypal_code;
         $product->instock    = $request->instock;
         $product->type  = $request->type;
         $product->image = $path;
