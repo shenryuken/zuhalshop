@@ -75,10 +75,11 @@
                 <div class="form-group row m-b-10">
                     <label class="col-lg-3 text-lg-right col-form-label">Country</label>
                     <div class="col-lg-9 col-xl-6">
+                        <span class="text-danger">*Leave Blank if not change ({{$address->country->name}})</span>
                         <select name="country" id="country" class="form-control selectpicker" data-size="10" data-live-search="true" @error('country_id') is-invalid @enderror">
                         <option value="">--Select Country--</option>
                         @foreach ($getCountries as $country => $value)
-                        <option value="{{ $country }}" @if($country == $address->city_id) selected="selected" @endif> {{ $value }}</option>   
+                        <option value="{{ $country }}" @if($country == $address->country_id) selected="selected" @endif> {{ $value }}</option>   
                         @endforeach
                     </select>
                     </div>
@@ -87,7 +88,9 @@
                  <!-- begin form-group row -->
                 <div class="form-group row m-b-10">
                     <label class="col-lg-3 text-lg-right col-form-label">State</label>
+
                     <div class="col-lg-9 col-xl-6">
+                        <span class="text-danger">*Leave Blank if not change ({{$address->state->name}})</span>
                         <select name="state" class="form-control" id="state">
                      
 
@@ -98,7 +101,9 @@
                 <!-- begin form-group row -->
                 <div class="form-group row m-b-10">
                     <label class="col-lg-3 text-lg-right col-form-label">City</label>
+
                     <div class="col-lg-9 col-xl-6">
+                        <span class="text-danger">*Leave Blank if not change ({{$address->city->name}})</span>
                         <select name="city" class="form-control" id="city">
                      
 
@@ -109,7 +114,7 @@
                 <div class="form-group row">
                     <div class="col-lg-9 ml-auto text-right">
                         <a class="btn btn-outline-secondary" href="{{url()->previous()}}">Back</a>
-                        <button type="submit" class="btn btn-primary" value="Save Changes">Add Address</button>
+                        <button type="submit" class="btn btn-primary" value="Save Changes">Update Address</button>
                     </div>
                 </div>
             </form>

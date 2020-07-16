@@ -54,17 +54,17 @@ class AddressController extends Controller
     		'street' 		=> 'required',
     		'city'			=> 'required',
     		'state' 		=> 'required',
-    		'country'	=> 'required',
+    		'country'	    => 'required',
     	]);
 
     	$address = Address::find($id);
     	$address->type 			= $request->type;
     	$address->receiver_name = $request->receiver_name;
     	$address->street 		= $request->street;
-    	$address->city_id 		= $request->city;
+    	$address->city_id 		= $request->city ? $request->city:$address->city_id;
     	$address->postcode 		= $request->postcode;
-    	$address->state_id 		= $request->state;
-    	$address->country_id 	= $request->country;
+    	$address->state_id 		= $request->state ? $request->state:$address->state_id; ;
+    	$address->country_id 	= $request->country ? $request->country:$address->country_id; 
     	$address->save();
 
         return redirect()->back()->with('success', 'Successfully update the address');
