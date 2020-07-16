@@ -76,6 +76,12 @@
 								 </div>
 							</div>
 							<div class="form-group row m-b-15">
+							  	<label class="col-md-3 col-form-label">Paypal Code</label>
+							  	<div class="col-md-2">
+								    <input type="text" name="paypal_code" class="form-control" value="{{$product->paypal_code}}" />
+								 </div>
+							</div>
+							<div class="form-group row m-b-15">
 								<label class="col-md-3 col-form-label">Type</label>
 								<div class="col-md-9">
 							        <select name="type" class="border shadow p-2 bg-white form-control col-md-3" >
