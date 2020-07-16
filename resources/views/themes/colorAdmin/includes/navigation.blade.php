@@ -48,7 +48,8 @@
 			<span>Orders</span>
 		</a>
 		<ul class="sub-menu">
-			<li class="{{(request()->is('orders') ? 'active':'' )}}"><a href="{{url('orders')}}">List</a></li>
+			<li class="{{(request()->is('orders') ? 'active':'' )}}"><a href="{{url('orders')}}">All</a></li>
+			<li class="{{(request()->is('orders') ? 'active':'' )}}"><a href="{{url('orders/delivered')}}">Delivered</a></li>
 			{{-- <li class="{{(request()->is('products/cards') ? 'active':'' )}}"><a href="{{url('products/cards')}}">Cards</a></li>
 			<li class="{{(request()->is('products/create') ? 'active':'' )}}"><a href="{{url('products/create')}}">Add New</a></li> --}}
 			<!-- <li><a href="email_compose.html">Compose</a></li>

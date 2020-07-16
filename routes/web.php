@@ -86,6 +86,7 @@ Route::get('payment/fail', 'PayPalController@fail')->name('payment.fail');
 //Orders
 Route::get('orders', 'OrderController@index');
 Route::get('orders/checkout', 'OrderController@checkout');
+Route::get('orders/delivered', 'OrderController@delivered');
 //END Orders
 
 //Webstore

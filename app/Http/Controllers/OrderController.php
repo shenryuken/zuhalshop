@@ -30,6 +30,13 @@ class OrderController extends Controller
         return view('orders.checkout');
     }
 
+    public function delivered()
+    {
+        $data = Order::where('delivery_status', 'delivered')->get();
+
+        return view('orders.delivered', compact('data'));
+    }
+
     // public function buyNow(Request $request)
     // {
     //     $ref         = $request->query('ref');

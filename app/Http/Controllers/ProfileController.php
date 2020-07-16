@@ -28,7 +28,10 @@ class ProfileController extends Controller
     public function show($id)
     {
     	$data = Profile::find($id);
-    	return view('profiles.show', compact('data'));
+        $tab  = '#profile-about';
+    	return view('profiles.show', compact('data','tab'));
+        //return redirect('profiles/'.$data->id.'#profile-about');
+        // return redirect()->to('profiles/'.$data->id.'#profile-about');
     }
 
     public function store(Request $request)
@@ -56,9 +59,9 @@ class ProfileController extends Controller
     	$profile->contact_no_office = $request->contact_no_office;
     	$profile->save();
 
-    	return redirect()->to('profiles/'.$profile->id);
+        return redirect()->to('profiles/'.$profile->id.'#profile-about');
     }
-
+        
     public function edit($id)
     {
     	$profile = Profile::find($id);
