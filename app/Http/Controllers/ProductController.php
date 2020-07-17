@@ -70,7 +70,7 @@ class ProductController extends Controller
     	$product->image = $path;
     	$product->save();
 
-        return redirect()->to('products');
+        return redirect()->to('products')->with('success', 'Successfully add new product');
     }
 
     public function edit($id)
@@ -96,9 +96,17 @@ class ProductController extends Controller
 
         $product = Product::find($id);
 
-        if ($request->file('image')) {
-            $path = $request->file('image')->store('products', 'public');
-        }else {
+        if ($request->file('image')) 
+        {
+            $oldImage   = $product->image;
+            $delete     = Storage::disk('public')->delete($oldImage); 
+            if($delete){
+                $path       = $request->file('image')->store('products', 'public');
+            }
+            
+        }   
+        else 
+        {
             $path = $product->image;
         }
 
@@ -113,7 +121,7 @@ class ProductController extends Controller
         $product->image = $path;
         $product->save();
 
-        return redirect()->to('products');
+        return redirect()->to('products')->with('success', 'Successfully update!');
     }
 
     public function buyNow($id)
@@ -152,10 +160,12 @@ class ProductController extends Controller
         $product = Product::find($id);
 
         $filetodelete = $product->image;
+
         try{
+
           $delete = Storage::disk('public')->delete($filetodelete); 
-          if($delete)
-          {
+
+          if($delete){
             $product->delete();
           } 
         }
