@@ -1,5 +1,6 @@
 @extends('themes.colorAdmin.app')
 @section('styles')
+<link href="{{asset('colorAdmin/plugins/bootstrap3-wysihtml5-bower/dist/bootstrap3-wysihtml5.min.css')}}" rel="stylesheet" />
 @endsection
 
 @section('content')
@@ -60,7 +61,8 @@
 							<div class="form-group row m-b-15">
 							  	<label class="col-md-3 col-form-label">Description</label>
 							  	<div class="col-md-9">
-								    <textarea name="description" class="form-control" rows="3">{{$product->description}}</textarea> 
+								    {{-- <textarea name="description" class="form-control" rows="3">{{$product->description}}</textarea> --}} 
+								    <textarea class="ckeditor form-control" id="editor1" name="description" rows="20">{{$product->description}}</textarea>
 								 </div>
 							</div>
 							<div class="form-group row m-b-15">
@@ -100,6 +102,7 @@
 							<div class="form-group row m-b-15">
 							  	<label class="col-md-3 col-form-label">Image</label>
 							  	<div class="col-md-9">
+							  		<span>*Leave blank to remain current image. Upload new image will delete cuurent image</span>
 								    <input type="file" name="image" class="form-control" placeholder=""/>
 								 </div>
 							</div>
@@ -120,6 +123,7 @@
 
 @endsection
 @section('scripts')
-
+<script src="{{asset('colorAdmin/plugins/ckeditor/ckeditor.js')}}"></script>
+<script src="{{asset('colorAdmin/plugins/bootstrap3-wysihtml5-bower/dist/bootstrap3-wysihtml5.all.min.js')}}"></script>
+<script src="{{asset('colorAdmin/js/demo/form-wysiwyg.demo.js')}}"></script>
 @endsection
-

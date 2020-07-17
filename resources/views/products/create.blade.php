@@ -1,5 +1,7 @@
 @extends('themes.colorAdmin.app')
 @section('styles')
+<link href="{{asset('colorAdmin/plugins/bootstrap3-wysihtml5-bower/dist/bootstrap3-wysihtml5.min.css')}}" rel="stylesheet" />
+
 @endsection
 
 @section('content')
@@ -54,7 +56,7 @@
 							<div class="form-group row m-b-15">
 							  	<label class="col-md-3 col-form-label">Description</label>
 							  	<div class="col-md-9">
-								    <textarea name="description" class="form-control" rows="3"></textarea> 
+								     <textarea class="ckeditor form-control" id="editor1" name="description" rows="20"></textarea> 
 								 </div>
 							</div>
 							<div class="form-group row m-b-15">
@@ -63,7 +65,12 @@
 								    <input type="text" name="price" class="form-control" placeholder=""/>
 								 </div>
 							</div>
-							
+							<div class="form-group row m-b-15">
+							  	<label class="col-md-3 col-form-label">Cost Price</label>
+							  	<div class="col-md-2">
+								    <input type="text" name="cost_price" class="form-control" placeholder=""/>
+								 </div>
+							</div>
 							<div class="form-group row m-b-15">
 							  	<label class="col-md-3 col-form-label">Paypal Code</label>
 							  	<div class="col-md-2">
@@ -109,6 +116,8 @@
 
 @endsection
 @section('scripts')
-
+<script src="{{asset('colorAdmin/plugins/ckeditor/ckeditor.js')}}"></script>
+<script src="{{asset('colorAdmin/plugins/bootstrap3-wysihtml5-bower/dist/bootstrap3-wysihtml5.all.min.js')}}"></script>
+<script src="{{asset('colorAdmin/js/demo/form-wysiwyg.demo.js')}}"></script>
 @endsection
 
