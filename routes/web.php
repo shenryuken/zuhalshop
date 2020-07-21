@@ -54,6 +54,10 @@ Route::post('profiles/account', 'AccountController@store');
 //END Profiles
 //Wallets
 Route::get('wallets/mywallet', 'WalletController@mywallet');
+Route::get('wallet/withdraws', 'WalletController@withdraws');
+Route::get('wallet/request_withdrawal', 'WalletController@requestWithdrawal');
+Route::post('wallet/request_withdrawal', 'WalletController@postRequestWithdrawal');
+//Route::post('wallet/withraw', 'WalletController@withraw');
 //END Wallets
 //Products
 

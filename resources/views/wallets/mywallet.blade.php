@@ -22,7 +22,7 @@
 @section('content')
 
 <div class="d-sm-flex align-items-center mb-3">
-    <a href="#" class="btn btn-inverse mr-2 text-truncate">
+    <a href="{{url('wallet/request_withdrawal')}}" class="btn btn-inverse mr-2 text-truncate">
         <i class="fa fa-calendar fa-fw text-white-transparent-5 ml-n1"></i> 
         <span>Request Withdrawal</span>
         <b class="caret"></b>
@@ -55,7 +55,7 @@
                         <!-- end title -->
                         <!-- begin total-sales -->
                         <div class="d-flex mb-1">
-                            <h2 class="mb-0">$<span data-animation="number" data-value="{{Auth::user()->wallet->current_balance or 0}}">{{Auth::user()->wallet->current_balance or 0}}</span></h2>
+                            <h2 class="mb-0">$<span data-animation="number" data-value="{{Auth::user()->wallet->current_balance}}">{{Auth::user()->wallet->current_balance}}</span></h2>
                             <div class="ml-auto mt-n1 mb-n1" style="position: relative;"><div id="total-sales-sparkline" style="min-height: 36px;"><div id="apexchartsr2vnaq5mk" class="apexcharts-canvas apexchartsr2vnaq5mk light" style="width: 200px; height: 36px;"><svg id="SvgjsSvg1122" width="200" height="36" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" class="apexcharts-svg" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: transparent none repeat scroll 0% 0%;"><g id="SvgjsG1124" class="apexcharts-inner apexcharts-graphical" transform="translate(0, 0)"><defs id="SvgjsDefs1123"><clipPath id="gridRectMaskr2vnaq5mk"><rect id="SvgjsRect1128" width="203" height="39" x="-1.5" y="-1.5" rx="0" ry="0" fill="#ffffff" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0"></rect></clipPath><clipPath id="gridRectMarkerMaskr2vnaq5mk"><rect id="SvgjsRect1129" width="202" height="38" x="-1" y="-1" rx="0" ry="0" fill="#ffffff" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0"></rect></clipPath><linearGradient id="SvgjsLinearGradient1135" x1="0" y1="1" x2="1" y2="1"><stop id="SvgjsStop1136" stop-opacity="1" stop-color="#348fe2" offset="0"></stop><stop id="SvgjsStop1137" stop-opacity="1" stop-color="#8753de" offset="1"></stop></linearGradient></defs><line id="SvgjsLine1127" x1="66.16666666666667" y1="0" x2="66.16666666666667" y2="36" stroke="#b6b6b6" stroke-dasharray="3" class="apexcharts-xcrosshairs" x="66.16666666666667" y="0" width="1" height="36" fill="#b1b9c4" filter="none" fill-opacity="0.9" stroke-width="1"></line><g id="SvgjsG1139" class="apexcharts-xaxis" transform="translate(0, 0)"><g id="SvgjsG1140" class="apexcharts-xaxis-texts-g" transform="translate(0, -4)"></g></g><g id="SvgjsG1143" class="apexcharts-grid"><g id="SvgjsG1144" class="apexcharts-gridlines-horizontal" style="display: none;"><line id="SvgjsLine1146" x1="0" y1="0" x2="200" y2="0" stroke="#e0e0e0" stroke-dasharray="0" class="apexcharts-gridline"></line><line id="SvgjsLine1147" x1="0" y1="7.2" x2="200" y2="7.2" stroke="#e0e0e0" stroke-dasharray="0" class="apexcharts-gridline"></line><line id="SvgjsLine1148" x1="0" y1="14.4" x2="200" y2="14.4" stroke="#e0e0e0" stroke-dasharray="0" class="apexcharts-gridline"></line><line id="SvgjsLine1149" x1="0" y1="21.6" x2="200" y2="21.6" stroke="#e0e0e0" stroke-dasharray="0" class="apexcharts-gridline"></line><line id="SvgjsLine1150" x1="0" y1="28.8" x2="200" y2="28.8" stroke="#e0e0e0" stroke-dasharray="0" class="apexcharts-gridline"></line><line id="SvgjsLine1151" x1="0" y1="36" x2="200" y2="36" stroke="#e0e0e0" stroke-dasharray="0" class="apexcharts-gridline"></line></g><g id="SvgjsG1145" class="apexcharts-gridlines-vertical" style="display: none;"></g><line id="SvgjsLine1153" x1="0" y1="36" x2="200" y2="36" stroke="transparent" stroke-dasharray="0"></line><line id="SvgjsLine1152" x1="0" y1="1" x2="0" y2="36" stroke="transparent" stroke-dasharray="0"></line></g><g id="SvgjsG1131" class="apexcharts-line-series apexcharts-plot-series"><g id="SvgjsG1132" class="apexcharts-series" seriesName="seriesx1" data:longestSeries="true" rel="1" data:realIndex="0"><path id="SvgjsPath1138" d="M 0 13.314311999999997C 11.666666666666666 13.314311999999997 21.66666666666667 9.554711999999999 33.333333333333336 9.554711999999999C 45 9.554711999999999 55.00000000000001 18.488712 66.66666666666667 18.488712C 78.33333333333334 18.488712 88.33333333333334 20.941704 100 20.941704C 111.66666666666667 20.941704 121.66666666666667 16.98228 133.33333333333334 16.98228C 145 16.98228 155.00000000000003 20.204784 166.66666666666669 20.204784C 178.33333333333334 20.204784 188.33333333333334 4.996464000000003 200 4.996464000000003" fill="none" fill-opacity="1" stroke="url(#SvgjsLinearGradient1135)" stroke-opacity="1" stroke-linecap="butt" stroke-width="3" stroke-dasharray="0" class="apexcharts-line" index="0" clip-path="url(#gridRectMaskr2vnaq5mk)" pathTo="M 0 13.314311999999997C 11.666666666666666 13.314311999999997 21.66666666666667 9.554711999999999 33.333333333333336 9.554711999999999C 45 9.554711999999999 55.00000000000001 18.488712 66.66666666666667 18.488712C 78.33333333333334 18.488712 88.33333333333334 20.941704 100 20.941704C 111.66666666666667 20.941704 121.66666666666667 16.98228 133.33333333333334 16.98228C 145 16.98228 155.00000000000003 20.204784 166.66666666666669 20.204784C 178.33333333333334 20.204784 188.33333333333334 4.996464000000003 200 4.996464000000003" pathFrom="M -1 36L -1 36L 33.333333333333336 36L 66.66666666666667 36L 100 36L 133.33333333333334 36L 166.66666666666669 36L 200 36"></path><g id="SvgjsG1133" class="apexcharts-series-markers-wrap"><g class="apexcharts-series-markers"><circle id="SvgjsCircle1159" r="0" cx="66.66666666666667" cy="18.488712" class="apexcharts-marker wwo6smcymg no-pointer-events" stroke="#ffffff" fill="#008ffb" fill-opacity="1" stroke-width="2" stroke-opacity="0.9" default-marker-size="0"></circle></g></g></g><g id="SvgjsG1134" class="apexcharts-datalabels"></g></g><line id="SvgjsLine1154" x1="0" y1="0" x2="200" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" class="apexcharts-ycrosshairs"></line><line id="SvgjsLine1155" x1="0" y1="0" x2="200" y2="0" stroke-dasharray="0" stroke-width="0" class="apexcharts-ycrosshairs-hidden"></line><g id="SvgjsG1156" class="apexcharts-yaxis-annotations"></g><g id="SvgjsG1157" class="apexcharts-xaxis-annotations"></g><g id="SvgjsG1158" class="apexcharts-point-annotations"></g></g><rect id="SvgjsRect1126" width="0" height="0" x="0" y="0" rx="0" ry="0" fill="#fefefe" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0"></rect><g id="SvgjsG1141" class="apexcharts-yaxis" rel="0" transform="translate(-21, 0)"><g id="SvgjsG1142" class="apexcharts-yaxis-texts-g"></g></g></svg><div class="apexcharts-legend"></div><div class="apexcharts-tooltip dark" style="left: 77.6667px; top: 6px;"><div class="apexcharts-tooltip-series-group active" style="display: flex;"><span class="apexcharts-tooltip-marker" style="background-color: rgb(0, 143, 251); display: none;"></span><div class="apexcharts-tooltip-text" style="font-family: Helvetica, Arial, sans-serif; font-size: 12px;"><div class="apexcharts-tooltip-y-group"><span class="apexcharts-tooltip-text-label"></span><span class="apexcharts-tooltip-text-value">$7,296.37</span></div><div class="apexcharts-tooltip-z-group"><span class="apexcharts-tooltip-text-z-label"></span><span class="apexcharts-tooltip-text-z-value"></span></div></div></div></div></div></div><div class="resize-triggers"><div class="expand-trigger"><div style="width: 201px; height: 38px;"></div></div><div class="contract-trigger"></div></div></div>
                         </div>
                         <!-- end total-sales -->
@@ -244,6 +244,47 @@
         <!-- end row -->
     </div>
     <!-- end col-6 -->
+</div>
+<div class="row">
+    <div class="table-responsive-lg col-lg-12">
+        <div class="d-sm-flex align-items-center mb-3">
+        <a href="#" class="btn btn-inverse mr-2 text-truncate">
+            <i class="fa fa-calendar fa-fw text-white-transparent-5 ml-n1"></i> 
+            <span>Transactions</span>
+            <b class="caret"></b>
+        </a>
+    </div>
+        <table id="data-table-combine" class="table table-sm table-striped table-bordered table-td-valign-middle" width="100%">
+            <thead class="thead-dark">
+                <tr>
+                    <th width="1%">NO</th>
+                    <th>DATE</th>
+                    <th>AMOUNT</th>
+                    <th>TYPE</th>
+                    <th>TO ACCOUNT</th>
+                    <th>STATUS</th>
+                </tr>
+            </thead>
+            
+            @foreach($transactions as $row)
+                @if($loop->odd)
+                <tr class="odd gradeX">
+                @else
+                <tr class="even gradeC">
+                @endif
+                    <td>{{$loop->index + 1}}</td>
+                    <td>{{$row->updated}}</td>
+                    <td>{{$row->amount}}</td>
+                    <td>{{$row->type}}</td>
+                    <td>{{$row->to_acc}}</td>
+                    <td>{{$row->status}}</td>
+                    <td class="row pl-5">
+                        <button onclick="window.location='{{ url("transactions/".$row->id) }}'" class="m-5 btn-sm btn-gray">Show</button>        
+                    </td>
+                </tr>
+            @endforeach
+        </table>
+    </div>
 </div>
 
 <!-- end row -->
