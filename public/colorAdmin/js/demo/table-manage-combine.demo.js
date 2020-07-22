@@ -32,6 +32,7 @@ var handleDataTableCombinationSetting = function() {
 			options.autoFill = false;
 		}
 		$('#data-table-combine').DataTable(options);
+		$('#data-table-combine-2').DataTable(options);
 	}
 };
 

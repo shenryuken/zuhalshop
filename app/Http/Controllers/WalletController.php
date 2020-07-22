@@ -31,7 +31,7 @@ class WalletController extends Controller
 
     	$transactions = Transaction::where('wallet_id', $id)->get();
 
-    	$withdrawals  = Withdrawal::where('user_id', Auth::id())->get();
+    	$withdrawals  = Withdrawal::where('user_id', Auth::id())->has('account')->get();
 
     	return view('wallets/mywallet', compact('mywallet', 'transactions', 'withdrawals'));
     }

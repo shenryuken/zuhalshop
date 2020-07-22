@@ -263,6 +263,7 @@
                     <th>TYPE</th>
                     <th>TO ACCOUNT</th>
                     <th>STATUS</th>
+                    <th>ACTION</th>
                 </tr>
             </thead>
             
@@ -286,8 +287,64 @@
         </table>
     </div>
 </div>
-
+<br>
+<hr>
+<br>
+<div class="row">
+    <div class="table-responsive-lg col-lg-12">
+        <div class="d-sm-flex align-items-center mb-3">
+            <a href="#" class="btn btn-inverse mr-2 text-truncate">
+                <i class="fa fa-calendar fa-fw text-white-transparent-5 ml-n1"></i> 
+                <span>Withdrawals</span>
+                <b class="caret"></b>
+            </a>
+        </div>
+        <table id="data-table-combine-2" class="table table-sm table-striped table-bordered table-td-valign-middle" width="100%">
+            <thead class="thead-dark">
+                <tr>
+                    <th width="1%">NO</th>
+                    <th>DATE</th>
+                    <th>AMOUNT</th>
+                    <th>TO ACCOUNT</th>
+                    <th>STATUS</th>
+                    <th>ACTION</th>
+                </tr>
+            </thead>
+            
+            @foreach($withdrawals as $row)
+                @if($loop->odd)
+                <tr class="odd gradeX">
+                @else
+                <tr class="even gradeC">
+                @endif
+                    <td>{{$loop->index + 1}}</td>
+                    <td>{{$row->updated_at}}</td>
+                    <td>{{$row->amount}}</td>
+                    <td>{{$row->account->acc_no}}</td>
+                    <td>
+                        @if($row->status === 0)
+                        <span>Pending</span>
+                        @elseif($row->status === 1)
+                        <span>Processing</span>
+                        @elseif($row->status === 2)
+                        <span>Cancel</span>
+                        @elseif($row->status === 3)
+                        <span>Paid</span>
+                        @elseif($row->status === 4)
+                        <span>Rejected</span>
+                        @endif
+                    </td>
+                    <td class="row pl-5">
+                        <button onclick="window.location='{{ url("withdrawals/".$row->id) }}'" class="m-5 btn-sm btn-gray">Show</button>        
+                    </td>
+                </tr>
+            @endforeach
+        </table>
+    </div>
+</div>
 <!-- end row -->
+
+<hr>
 
 @endsection
 @section('scripts')
@@ -300,12 +357,10 @@
 	<script src="{{ asset('colorAdmin/plugins/datatables.net-autofill-bs4/js/autofill.bootstrap4.min.js')}}"></script>
 	<script src="{{ asset('colorAdmin/plugins/datatables.net-colreorder/js/dataTables.colreorder.min.js')}}"></script>
 	<script src="{{ asset('colorAdmin/plugins/datatables.net-colreorder-bs4/js/colreorder.bootstrap4.min.js')}}"></script>
-	<!-- <script src="{{ asset('colorAdmin/plugins/datatables.net-keytable/js/dataTables.keytable.min.js')}}"></script>
-	<script src="{{ asset('colorAdmin/plugins/datatables.net-keytable-bs4/js/keytable.bootstrap4.min.js')}}"></script> -->
+	
 	<script src="{{ asset('colorAdmin/plugins/datatables.net-rowreorder/js/dataTables.rowreorder.min.js')}}"></script>
 	<script src="{{ asset('colorAdmin/plugins/datatables.net-rowreorder-bs4/js/rowreorder.bootstrap4.min.js')}}"></script>
-	<!-- <script src="{{ asset('colorAdmin/plugins/datatables.net-select/js/dataTables.select.min.js')}}"></script>
-	<script src="{{ asset('colorAdmin/plugins/datatables.net-select-bs4/js/select.bootstrap4.min.js')}}"></script> -->
+	
 	<script src="{{ asset('colorAdmin/plugins/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
 	<script src="{{ asset('colorAdmin/plugins/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js')}}"></script>
 	<script src="{{ asset('colorAdmin/plugins/datatables.net-buttons/js/buttons.colVis.min.js')}}"></script>
@@ -316,6 +371,7 @@
 	<script src="{{ asset('colorAdmin/plugins/pdfmake/build/vfs_fonts.js')}}"></script>
 	<script src="{{ asset('colorAdmin/plugins/jszip/dist/jszip.min.js')}}"></script>
 	<script src="{{ asset('colorAdmin/js/demo/table-manage-combine.demo.js')}}"></script>
+    <script src="{{ asset('colorAdmin/js/demo/table-manage-combine-2.demo.js')}}"></script>
 
 	<script src="{{ asset('colorAdmin/plugins/gritter/js/jquery.gritter.js')}}"></script>
 	<script src="{{ asset('colorAdmin/plugins/sweetalert/dist/sweetalert.min.js')}}"></script>
