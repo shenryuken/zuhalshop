@@ -25,4 +25,9 @@ class Wallet extends Model
     {
         return $this->hasMany('App\Models\Transaction')->withDefault();
     }
+
+    public function account()
+    {
+        return $this->belongsTo('App\Models\Account');
+    }
 }
