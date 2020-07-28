@@ -27,7 +27,7 @@
         <span>Request Withdrawal</span>
         <b class="caret"></b>
     </a>
-    <a href="#" class="btn btn-inverse mr-2 text-truncate">
+    <a href="{{url('wallet/transfer')}}" class="btn btn-inverse mr-2 text-truncate">
         <i class="fa fa-calendar fa-fw text-white-transparent-5 ml-n1"></i> 
         <span>Transfer</span>
         <b class="caret"></b>
@@ -325,9 +325,9 @@
                         @if($row->status === 0)
                         <span>Pending</span>
                         @elseif($row->status === 1)
-                        <span>Processing</span>
-                        @elseif($row->status === 2)
                         <span>Cancel</span>
+                        @elseif($row->status === 2)
+                        <span>Processing</span>
                         @elseif($row->status === 3)
                         <span>Paid</span>
                         @elseif($row->status === 4)
@@ -335,7 +335,8 @@
                         @endif
                     </td>
                     <td class="row pl-5">
-                        <button onclick="window.location='{{ url("withdrawals/".$row->id) }}'" class="m-5 btn-sm btn-gray">Show</button>        
+                        <button onclick="window.location='{{ url("withdraws/".$row->id) }}'" class="m-5 btn-sm btn-gray">Show</button>  
+                        <button onclick="window.location='{{ url("withdraws/".$row->id."/edit") }}'" class="m-5 btn-sm btn-gray">Update</button>      
                     </td>
                 </tr>
             @endforeach

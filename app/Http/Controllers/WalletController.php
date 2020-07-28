@@ -38,13 +38,13 @@ class WalletController extends Controller
 
     public function withdraws()
     {
-    	if(Auth::user()->isAdmin)
+    	if(Auth::user()->isAdmin())
     	{
-    		$data = Wallet::where('request_withdraw','>', 0)->get();
+    		$data = Withdrawal::all();
     	}
     	else
     	{
-    		$data = Wallet::where('user_id', Auth::id())->where('request_withdrawal','>', 0)->get();
+    		$data = Withdrawal::where('user_id', Auth::id())->get();
     	}
 
     	return view('wallets.withdraws', compact('data'));
@@ -78,13 +78,29 @@ class WalletController extends Controller
     	return redirect()->back()->with('success', 'Your request successfully submitted');
     }
 
-    public function approvedWithdrawal()
-    {
-    	//
-    }
-
     public function transfer()
     {
-    	//
+    	return view('wallets.transfer');
+    }
+
+    public function postTransfer(Request $request)
+    {
+        $request->validate([
+            'amount' => 'required',
+            'username' => 'required|exists:users,name'
+        ]);
+
+        $receiver = User::where('name', $request->username)->first();
+
+        try {
+            $wallet_sender = Wallet::find(Auth::id());
+            $wallet_sender->decrement($request->amount);
+
+            $wallet_receiver = Wallet::find($receiver->id);
+            $wallet_receiver->increment($request->amount);
+            
+        } catch (Exception $e) {
+            return redirect()->back()->with('failed', 'Your request is failed to submit. Please try again later.');
+        }
     }
 }

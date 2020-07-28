@@ -250,5 +250,6 @@
 	<script src="{{('colorAdmin/js/theme/default.min.js')}}"></script>
 	<!-- ================== END BASE JS ================== -->
 	<script src="{{('colorAdmin/plugins/bootstrap-select/dist/js/bootstrap-select.min.js')}}"></script>
+	
 </body>
 </html>

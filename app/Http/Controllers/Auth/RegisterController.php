@@ -84,11 +84,11 @@ class RegisterController extends Controller
         DB::beginTransaction();
 
         $user = new User;
-        $user->name = $data['name'];
-        $user->email = $data['email'];
-        $user->password = Hash::make($data['password']);
-        $user->country_id = $data['country_id'];
-        $user->referred_by =  $introducer ? $introducer->id:0;
+        $user->name         = $data['name'];
+        $user->email        = $data['email'];
+        $user->password     = Hash::make($data['password']);
+        $user->country_id   = $data['country_id'];
+        $user->referred_by  =  $introducer ? $introducer->id:0;
         $user->save();
 
         $wallet = new Wallet;
