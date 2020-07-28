@@ -129,9 +129,15 @@ return [
     |
     */
 
+    // 'custom' => [
+    //     'attribute-name' => [
+    //         'rule-name' => 'custom-message',
+    //     ],
+    // ], original code
+
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'receipt' => [
+            'required_if' => 'The :attribute field is required when :other is "paid".',
         ],
     ],
 

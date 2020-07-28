@@ -10,4 +10,9 @@ class Withdrawal extends Model
     {
     	return $this->belongsTo('App\Models\Account');
     }
+
+    public function user()
+    {
+    	return $this->belongsTo('App\User');
+    }
 }

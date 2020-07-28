@@ -21,6 +21,7 @@ Route::get('/', function () {
 
 // Auth::routes();
 Auth::routes(['verify' => true]);
+
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
 Route::post('notifyme', 'NotifymeController@notifyme');
@@ -59,6 +60,14 @@ Route::get('wallet/request_withdrawal', 'WalletController@requestWithdrawal');
 Route::post('wallet/request_withdrawal', 'WalletController@postRequestWithdrawal');
 //Route::post('wallet/withraw', 'WalletController@withraw');
 //END Wallets
+
+// Withdraw
+Route::get('withdraws', 'WithdrawController@index');
+Route::get('withdraws/{id}/edit', 'WithdrawController@edit');
+Route::get('withdraws/{id}', 'WithdrawController@show');
+Route::put('withdraws/{id}', 'WithdrawController@update');
+// END Withdraw
+
 //Products
 
 Route::get('products/create', 'ProductController@create');
