@@ -8,6 +8,7 @@ use App\Models\Wallet;
 use App\Models\Withdrawal;
 use App\Models\Account;
 use App\Models\Transaction;
+Use App\User;
 
 use Auth;
 
@@ -94,13 +95,19 @@ class WalletController extends Controller
 
         try {
             $wallet_sender = Wallet::find(Auth::id());
-            $wallet_sender->decrement($request->amount);
+            $wallet_sender->current_balance = $wallet_sender->current_balance - $request->amount ;
+            $wallet_sender->save();
 
             $wallet_receiver = Wallet::find($receiver->id);
-            $wallet_receiver->increment($request->amount);
+            $wallet_receiver->current_balance = $wallet_receiver->current_balance + $request->amount;
+            $wallet_receiver->save();
             
         } catch (Exception $e) {
             return redirect()->back()->with('failed', 'Your request is failed to submit. Please try again later.');
         }
+
+        return redirect()->back()->with('success', 'Your request successfully submitted');
     }
+
+
 }

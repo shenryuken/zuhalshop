@@ -58,6 +58,8 @@ Route::get('wallets/mywallet', 'WalletController@mywallet');
 Route::get('wallet/withdraws', 'WalletController@withdraws');
 Route::get('wallet/request_withdrawal', 'WalletController@requestWithdrawal');
 Route::post('wallet/request_withdrawal', 'WalletController@postRequestWithdrawal');
+Route::get('wallet/transfer', 'WalletController@transfer');
+Route::post('wallet/transfer', 'WalletController@postTransfer');
 //Route::post('wallet/withraw', 'WalletController@withraw');
 //END Wallets
 
