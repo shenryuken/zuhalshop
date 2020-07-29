@@ -30,9 +30,9 @@
 		  		@if($data->status === 0)
                 <span class="badge badge-secondary badge-default">Pending</span>
                 @elseif($data->status === 1)
-                <span class="badge badge-secondary badge-warning">Processing</span>
+                <span class="badge badge-secondary badge-warning">Cancel</span>
                 @elseif($data->status === 2)
-                <span class="badge badge-secondary badge-secondary">Cancel</span>
+                <span class="badge badge-secondary badge-secondary">Processing</span>
                 @elseif($data->status === 3)
                 <span class="badge badge-secondary badge-success">Paid</span>
                 @elseif($data->status === 4)

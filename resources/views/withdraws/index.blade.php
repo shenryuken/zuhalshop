@@ -51,6 +51,9 @@
             <thead class="thead-dark">
                 <tr>
                     <th width="1%">NO</th>
+                    @if(Auth::user()->isAdmin())
+                    <th>REQUEST BY</th>
+                    @endif
                     <th>DATE</th>
                     <th>AMOUNT</th>
                     <th>TO ACCOUNT</th>
@@ -66,6 +69,9 @@
                 <tr class="even gradeC">
                 @endif
                     <td>{{$loop->index + 1}}</td>
+                    @if(Auth::user()->isAdmin())
+                    <td>{{$row->user->name}}</td>
+                    @endif
                     <td>{{$row->updated_at}}</td>
                     <td>{{$row->amount}}</td>
                     <td>{{$row->account->acc_no }} : {{$row->account->bank->name}}</td>
@@ -73,9 +79,9 @@
                         @if($row->status === 0)
                         <span>Pending</span>
                         @elseif($row->status === 1)
-                        <span>Processing</span>
-                        @elseif($row->status === 2)
                         <span>Cancel</span>
+                        @elseif($row->status === 2)
+                        <span>Processing</span>
                         @elseif($row->status === 3)
                         <span>Paid</span>
                         @elseif($row->status === 4)
@@ -84,6 +90,7 @@
                     </td>
                     <td>
                         <a href="{{url('withdraws/'.$row->id.'/edit')}}" class="btn btn-sm btn-primary">Update</a>
+                        <a href="{{url('withdraws/'.$row->id)}}" class="btn btn-sm btn-grey">Show</a>
                     </td>
                 </tr>
             @endforeach
