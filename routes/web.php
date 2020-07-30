@@ -70,8 +70,11 @@ Route::get('withdraws/{id}', 'WithdrawController@show');
 Route::put('withdraws/{id}', 'WithdrawController@update');
 // END Withdraw
 
-//Products
+// Transactions
+Route::get('transactions', 'TransactionController@index');
+// END Transactions
 
+//Products
 Route::get('products/create', 'ProductController@create');
 Route::get('products/cards', 'ProductController@cards');
 Route::get('products', 'ProductController@index');
