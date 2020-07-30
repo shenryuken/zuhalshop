@@ -108,6 +108,23 @@
 		</ul>
 	</li>
 	{{-- End Invoices --}}
+	{{-- Transactions --}}
+	<li class="has-sub {{(request()->is('transactions*') ? 'active':'' )}}">
+		<a href="javascript:;">
+			{{-- <span class="badge pull-right">10</span> --}}
+			<b class="caret"></b>
+			<i class="fa fa-hdd"></i>
+			<span>Transactions</span>
+		</a>
+		<ul class="sub-menu">
+			<li class="{{(request()->is('transactions') ? 'active':'' )}}"><a href="{{url('transactions')}}">List</a></li>
+			{{-- <li class="{{(request()->is('products/cards') ? 'active':'' )}}"><a href="{{url('products/cards')}}">Cards</a></li>
+			<li class="{{(request()->is('products/create') ? 'active':'' )}}"><a href="{{url('products/create')}}">Add New</a></li> --}}
+			<!-- <li><a href="email_compose.html">Compose</a></li>
+			<li><a href="email_detail.html">Detail</a></li> -->
+		</ul>
+	</li>
+	{{-- End Transactions --}}
 	<!-- begin sidebar minify button -->
 	<li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
 	<!-- end sidebar minify button -->
