@@ -52,7 +52,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function wallet()
     {
-        return $this->hasOne('App\Models\Wallet')->withDefault();;
+        return $this->hasOne('App\Models\Wallet')->withDefault();
     }
 
     public function profile()
@@ -88,5 +88,15 @@ class User extends Authenticatable implements MustVerifyEmail
     public function orders()
     {
         return $this->hasMany('App\Models\Order');
+    }
+
+    public function zesNodes()
+    {
+        return $this->hasMany('App\Models\Zes');
+    }
+
+    public function zebNodes()
+    {
+        return $this->hasMany('App\Models\Zeb');
     }
 }

@@ -6,7 +6,7 @@ use Baum\Node;
 
 class Zeb extends Node
 {
-    protected $fillable = ['user_id', 'parent_id', 'lft', 'rgt', 'depth'];
+    protected $fillable = ['user_id', 'parent_id', 'lft', 'rgt', 'depth', 'name'];
 
     public function user()
     {

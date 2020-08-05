@@ -136,3 +136,20 @@ Route::get('getCountries', 'DropdownController@getCountries');
 Route::get('getStates/{country_id}', 'DropdownController@getStates');
 Route::get('getCities/{state_id}', 'DropdownController@getCities');
 //End Dropdown
+
+//Program
+Route::group(['prefix'=>'programs'], function()
+{
+	//Zes
+	Route::get('/zes', 'ZesController@index');
+	Route::get('/zes/create-node', 'ZesController@createNode');
+
+	//End Zes
+	//Zeb
+	Route::get('/zeb', 'ZebController@index');
+	Route::get('/zeb/create-node', 'ZebController@createNode');
+	Route::get('/zeb/{id}/create-child', 'ZebController@createChild');
+	Route::get('/zeb/{id}', 'ZebController@show');
+	//End Zeb
+});
+//END Program
