@@ -7,9 +7,20 @@ use Illuminate\Http\Request;
 use App\Models\Zes;
 
 use Auth;
+use App\Traits\NodeTrait;
+
 
 class ZesController extends Controller
 {
+    use NodeTrait;
+
+    public $model;
+
+    public function __construct()
+    {
+        $this->model = 'App\Models\Zes';
+    }
+
     public function index()
     {
     	$user_id    = Auth::id();
