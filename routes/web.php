@@ -150,6 +150,7 @@ Route::group(['prefix'=>'programs'], function()
 	Route::get('/zeb/create-node', 'ZebController@createNode');
 	Route::get('/zeb/{id}/create-child', 'ZebController@createChild');
 	Route::get('/zeb/{id}', 'ZebController@show');
+	Route::get('zeb/getAncestors/{id}/{depth?}', 'ZebController@getAncestors');
 	//End Zeb
 });
 //END Program
