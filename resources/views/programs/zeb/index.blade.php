@@ -86,6 +86,7 @@
                     <td>
                         <button onclick="window.location='{{ url("programs/zeb/".$row->id."/create-child") }}'" class="m-5 btn-sm btn-gray">Create Child</button>
                         <button onclick="window.location='{{ url("programs/zeb/".$row->id) }}'" class="m-5 btn-sm btn-gray">Show</button>
+                        <button onclick="window.location='{{ url("programs/zeb/checkAncestors/".$row->id) }}'" class="m-5 btn-sm btn-gray">Check</button>
                     </td>
                     {{-- <td class="row pl-5">
                         <button onclick="window.location='{{ url("products/".$row->id) }}'" class="m-5 btn-sm btn-gray">Show</button>
