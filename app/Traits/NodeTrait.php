@@ -2,26 +2,58 @@
 
 namespace App\Traits;
 
+use Gloudemans\Shoppingcart\Facades\Cart;
+
 use App\Models\Zeb;
 use App\Models\Zes;
 use App\User;
+use Baum\Node;
+
 use Auth;
 
 trait NodeTrait
 {
-    public function createNode()
+    public function assignNodeProgram()
     {
-    	$root = $this->model::create(['user_id'=>Auth::id()]);
+        $cart = Cart::content();
 
-    	return redirect()->back()->with('success', 'Successful create node');
-    }
+        foreach($cart as $item)
+        {
+            if($item->id == 2)
+            {
+                $zesNodes = Zes::where([['lft' => null] , ['rgt' => null] ])->get();
+                //$zesNodes = Zes::leaves()->get();
+                if(count($zesNodes) == 0)
+                    Zes::create(['user_id'=>Auth::id()]);
+                else
+                {
+                    $nodes      = Zes::allLeaves();
+                    $firstNode  = $nodes->min('id');
+                    $child      = Zes::create(['user_id'=>Auth::id()]);
 
-    public function createChild($id)
-    {
-    	$parent = $model::find($id);
-    	$child  = $parent->children()->create(['user_id'=>Auth::id()]);
-    	
-    	return redirect()->back()->with('success', 'Successful create node');
+                    $child->makeChildOf($firstNode);
+                }
+                    
+            }
+            elseif($item->id == 3)
+            {
+                $zebNode = Zeb::where([['lft' => null] , ['rgt' => null] ])->get();
+                if(count($zebNode) == 0)
+                    $zebNode->children->create(['user_id'=>Auth::id()]);
+                else
+                    $zebNode->create(['user_id'=>Auth::id()]);
+            }
+            elseif($item->id == 4)
+            {
+                $zepNode = Zep::where([['lft' => null] , ['rgt' => null] ])->get();
+                if(count($zepNode) == 0)
+                    $zepNode->children->create(['user_id'=>Auth::id()]);
+                else
+                    $zepNode->create(['user_id'=>Auth::id()]);
+            }
+        }
+
+        return redirect()->back();
     }
 
     public function buildTree($elements, $parentId)
@@ -43,97 +75,12 @@ trait NodeTrait
                 if ($children) {
                     $element['children'] = $children;       
                 }
+
                 $branch[] = $element;
                 
                 unset($element);
             }     
         }
         return $branch;
-    }
-
-    public function getAncestors($id, $depth = null)
-    {
-
-    	// if($depth)
-    	// {
-    	// 	$node = $this->model::find($id);
-    	// 	$ancestors = $node->getAncestors();
-    	// }
-    	// else
-    	// {
-    	// 	$node = $this->model::find($id);
-    	// 	$ancestors = $node->getAncestorsAndSelf()->toArray();
-    	// }
-
-    	// dd(json_encode($ancestors));
-    	// return $ancestors;
-
-    	//$node = 
-    }
-
-    public function checkAncestors($id)
-    {
-    	$depth	= 3;
-    	$found 	= 0;
-    	$pid 	= null;//parent id
-
-    	//check if user_id have same  within 3 level up
-    	for($x = 0; $x < $depth; $x++)
-    	{
-    		$node 	= $this->model::find($id);
-    		$uid  	= $node->user_id;
-    		$pid  	= $node->parent_id;
-    		$pnode 	= $this->model::find($pid);
-
-    		if($node->parent_id && $node->user_id == $pnode->user_id)
-    		{
-    			$found = 1;
-    			break;
-    		}
-    		elseif(!$node->parent_id)
-    		{
-    			$found = 'root';
-    			break;
-    		}
-    		else
-    		{
-    			$id = $pid;
-    		}
-    	}
-
-    	//dd($found);
-
-    	return $found;
-    }
-
-    public function checkChildren($id)
-    {
-    	$left_child 	= 0;
-    	$right_child 	= 0;
-    	$descendants    = 0;
-    	//$data 			= new array();
-
-    	$node = $this->model::find($id);
-
-    	if($node->total_descendants > 0 )
-    	{
-    		if($node->left_child != null && $node->left_child > 0 )
-    		{
-    			$left_child = $node->left_child;
-    		} 
-
-    		if($node->right_child != null && $node->right_child > 0)
-    		{
-    			$right_child = $node->right_child;
-    		}
-
-    		$data = [
-    			'left_child' => $left_child,
-    			'right_child'=> $right_child,
-    			'descendants'=> $total_descendants
-    		];
-    	}
-
-    	return $data;
     }
 }

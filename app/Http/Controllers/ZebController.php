@@ -19,30 +19,20 @@ class ZebController extends Controller
     public function __construct()
     {
         $this->model = 'App\Models\Zeb';
+        $this->middleware(['auth','verified']);
     }
 
     public function index()
     {
     	$user_id    = Auth::id();
-    	$data 		= Zeb::where('user_id', $user_id)->get();
+
+        if(Auth::user()->isAdmin())
+    	   $data 		= Zeb::all();
+        else
+           $data        = Zeb::where('user_id', $user_id)->get(); 
 
     	return view('programs.zeb.index', compact('data'));
     }
-
-    // public function createNode()
-    // {
-    //     $root = Zeb::create(['user_id'=>Auth::id()]);
-
-    //     return redirect()->back()->with('success', 'Successful create node');
-    // }
-
-    // public function createChild($id)
-    // {
-    // 	//$parent = Zeb::find($id);
-    // 	$child  = $parent->children()->create(['user_id'=>Auth::id()]);
-    	
-    // 	return redirect()->back()->with('success', 'Successful create node');
-    // }
 
     public function show($id)
     {

@@ -11,7 +11,16 @@ class WebstoreController extends Controller
     public function index()
     {
         $products = Product::all();
+
+        //dd(Cart::content());
         return view('store.index', compact('products'));
+    }
+
+    public function buyNow(Product $product)
+    {
+        Cart::destroy();
+        Cart::add($product->id, $product->name, 1, $product->price);
+        return view('store.buynow', compact('product'));
     }
 
     # Our function for adding a certain product to the cart

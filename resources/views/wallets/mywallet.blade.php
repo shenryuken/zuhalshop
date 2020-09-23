@@ -69,8 +69,8 @@
                         <div class="row text-truncate">
                             <!-- begin col-6 -->
                             <div class="col-6">
-                                <div class="f-s-12 text-grey">Total Sales Order</div>
-                                <div class="f-s-18 m-b-5 f-w-600 p-b-1" data-animation="number" data-value="1568">1,568</div>
+                                <div class="f-s-12 text-grey">Total Purchases Order</div>
+                                <div class="f-s-18 m-b-5 f-w-600 p-b-1" data-animation="number" data-value="{{$total_purchases}}">MYR {{$total_purchases}}</div>
                                 <div class="progress progress-xs rounded-lg bg-dark-darker m-b-5">
                                     <div class="progress-bar progress-bar-striped rounded-right bg-teal" data-animation="width" data-value="55%" style="width: 55%;"></div>
                                 </div>
@@ -79,7 +79,7 @@
                             <!-- begin col-6 -->
                             <div class="col-6">
                                 <div class="f-s-12 text-grey">Total Sales Bonus</div>
-                                <div class="f-s-18 m-b-5 f-w-600 p-b-1">$<span data-animation="number" data-value="41.20">41.20</span></div>
+                                <div class="f-s-18 m-b-5 f-w-600 p-b-1">$<span data-animation="number" data-value="0.00">0.00</span></div>
                                 <div class="progress progress-xs rounded-lg bg-dark-darker m-b-5">
                                     <div class="progress-bar progress-bar-striped rounded-right" data-animation="width" data-value="55%" style="width: 55%;"></div>
                                 </div>
@@ -102,6 +102,8 @@
         <!-- end card -->
     </div>
     <!-- end col-6 -->
+    @php
+    /*
     <!-- begin col-6 -->
     <div class="col-xl-6">
         <!-- begin row -->
@@ -244,6 +246,8 @@
         <!-- end row -->
     </div>
     <!-- end col-6 -->
+    */
+    @endphp
 </div>
 <div class="row">
     <div class="table-responsive-lg col-lg-12">

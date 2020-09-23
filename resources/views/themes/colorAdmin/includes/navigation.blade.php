@@ -7,6 +7,26 @@
 		</a>
 	</li>
 	{{-- Banks --}}
+	<li class="has-sub {{(request()->is('accounts*') ? 'active':'' )}}">
+		
+		<a href="javascript:;">
+			{{-- <span class="badge pull-right">10</span> --}}
+			<b class="caret"></b>
+			<i class="fa fa-hdd"></i>
+			<span>Accounts</span>
+		</a>
+		
+		<ul class="sub-menu">
+			@if(Auth::user()->isAdmin())
+			<li class="{{(request()->is('accounts') ? 'active':'' )}}"><a href="{{url('accounts')}}">List</a></li>
+			@endif
+			<li class="{{(request()->is('accounts/create') ? 'active':'' )}}"><a href="{{url('accounts/create')}}">Add New</a></li>
+			<!-- <li><a href="email_compose.html">Compose</a></li>
+			<li><a href="email_detail.html">Detail</a></li> -->
+		</ul>
+	</li>
+	{{-- End Banks --}}
+	{{-- Banks --}}
 	<li class="has-sub {{(request()->is('banks*') ? 'active':'' )}}">
 		<a href="javascript:;">
 			{{-- <span class="badge pull-right">10</span> --}}
@@ -32,7 +52,7 @@
 		</a>
 		<ul class="sub-menu">
 			<li class="{{(request()->is('products') ? 'active':'' )}}"><a href="{{url('products')}}">List</a></li>
-			<li class="{{(request()->is('products/cards') ? 'active':'' )}}"><a href="{{url('products/cards')}}">Cards</a></li>
+			{{-- <li class="{{(request()->is('products/cards') ? 'active':'' )}}"><a href="{{url('products/cards')}}">Cards</a></li> --}}
 			<li class="{{(request()->is('products/create') ? 'active':'' )}}"><a href="{{url('products/create')}}">Add New</a></li>
 			<!-- <li><a href="email_compose.html">Compose</a></li>
 			<li><a href="email_detail.html">Detail</a></li> -->

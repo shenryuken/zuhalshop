@@ -2,13 +2,13 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 use Auth;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable
 {
     use Notifiable;
 
@@ -18,7 +18,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'type', 'country_id', 'referred_by',
+        'name', 'email', 'password',
     ];
 
     /**
@@ -80,9 +80,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany('App\User', 'referred_by');
     }
 
-    public function accounts()
+    public function account()
     {
-        return $this->hasMany('App\Models\Account');
+        return $this->hasOne('App\Models\Account');
     }
 
     public function orders()

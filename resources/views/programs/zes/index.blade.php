@@ -63,6 +63,7 @@
                     <th>DEPTH</th>
                     <th>CREATED AT</th>
                     <th>UPDATED AT</th>
+                    <th>ACTION</th>
                 </tr>
             </thead>
             
@@ -80,6 +81,11 @@
                     <td>{{$row->depth}}</td>
                     <td>{{$row->created_at}}</td>
                     <td>{{$row->updated_at}}</td>
+                    <td>
+                        <button onclick="window.location='{{ url("programs/zes/".$row->id."/create-child") }}'" class="m-5 btn-sm btn-gray">Create Child</button>
+                        <button onclick="window.location='{{ url("programs/zes/".$row->id) }}'" class="m-5 btn-sm btn-gray">Show</button>
+                        <button onclick="window.location='{{ url("programs/zes/checkAncestors2/".$row->id) }}'" class="m-5 btn-sm btn-gray">Check</button>
+                    </td>
                     {{-- <td class="row pl-5">
                         <button onclick="window.location='{{ url("products/".$row->id) }}'" class="m-5 btn-sm btn-gray">Show</button>
                         <button onclick="window.location='{{ url("products/".$row->id."/edit") }}'" class="m-5 btn-sm btn-primary">Edit</button> 

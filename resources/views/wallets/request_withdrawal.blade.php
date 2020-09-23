@@ -50,11 +50,12 @@
                 <div class="form-group row">
                     <label class="col-lg-3 col-form-label form-control-label">Bank</label>
                     <div class="col-lg-9">
-                        <select class="form-control" name="acc_no">
+                        <input class="form-control" type="text" name="acc_no" value="{{Auth::user()->acc_no}}" />
+                        {{-- <select class="form-control" name="acc_no">
                             @foreach(Auth::user()->accounts as $account)
                             <option value="{{$account->acc_no}}">{{$account->acc_no}}-{{$account->bank->name}} </option>
                             @endforeach
-                        </select>
+                        </select> --}}
                     </div>
                 </div>
                 <div class="form-group row">

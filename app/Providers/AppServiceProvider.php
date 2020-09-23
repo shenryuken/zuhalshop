@@ -4,6 +4,10 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+use App\Billing\PaymentGatewayContract;
+use App\Billing\ToyyibPaymentGateway;
+use App\Billing\PaypalPaymentGateway;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -13,18 +17,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(PaymentGatewayContract::class, function ($app){
-            if(request()->has('credit'))
+        $this->app->singleton(PaymentGatewayContract::class, function($app) {
+            if(request()->payment_method === 'toyyibpay')
             {
-                return new CreditPaymentGateway('myr');
+                return new ToyyibPaymentGateway('myr');
+                //return new PaypalPaymentGateway('usd');
             }
-            elseif (request()->has('m2upay')) 
-            {
-                return new M2UPay('myr');
-            }
-            else
-                return new BankPaymentGateway('myr');
-            
+
+            return new PaypalPaymentGateway('myr');
         });
     }
 

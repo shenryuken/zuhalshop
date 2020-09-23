@@ -15,7 +15,6 @@
 	<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@may-the-fourth/dist/alpine.min.js" defer></script>
 	<!-- ================== END BASE CSS STYLE ================== -->
 	@yield('styles')
-	@livewireStyles
 </head>
 <body>
 	<!-- begin #page-loader -->
@@ -57,6 +56,5 @@
 	<script src="{{ asset('colorAdmin/js/theme/default.min.js')}}"></script>
 	<!-- ================== END BASE JS ================== -->
 	@yield('scripts')
-	@livewireScripts
 </body>
 </html>

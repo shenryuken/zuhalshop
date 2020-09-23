@@ -43,6 +43,7 @@
                 <a href="{{url('products/'.$product->id.'/promo')}}" class="section-btn pricing-btn btn btn-sm btn-primary ">Buy</a>
                 @endif
                 <a href="{{ route('add', [ $product->getRouteKey() ]) }}" class="btn btn-sm btn-grey">Add To Cart</a> 
+                <a href="{{ url('store/'.$product->id.'/buynow' ) }}" class="btn btn-sm btn-grey">Buy Now</a>
                 @if(Auth::user()->isAdmin())
                 <a href="{{url('products/'.$product->id.'/edit')}}" class="btn btn-sm btn-warning float-right">Edit</a>
                 @endif
