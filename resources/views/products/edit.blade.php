@@ -109,7 +109,7 @@
 							
 							<div class="form-group row">
 								<div class="col-md-7 offset-md-3">
-									<button type="submit" class="btn btn-sm btn-primary m-r-5">Add</button>
+									<button type="submit" class="btn btn-sm btn-primary m-r-5">Update</button>
 									<a href="{{ url()->previous() }}" class="btn btn-sm btn-default">Back</a>
 								</div>
 							</div>

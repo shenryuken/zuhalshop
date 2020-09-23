@@ -30,11 +30,13 @@ class WalletController extends Controller
     	$id = $mywallet->id;
     	//dd($id);
 
+        $total_purchases = Auth::user()->orders()->sum('total_amount');
+
     	$transactions = Transaction::where('wallet_id', $id)->get();
 
     	$withdrawals  = Withdrawal::where('user_id', Auth::id())->has('account')->get();
 
-    	return view('wallets/mywallet', compact('mywallet', 'transactions', 'withdrawals'));
+    	return view('wallets/mywallet', compact('mywallet', 'transactions', 'withdrawals', 'total_purchases'));
     }
 
     public function withdraws()

@@ -53,7 +53,7 @@
                 <div class="stats-icon"><i class="fa fa-users"></i></div>
                 <div class="stats-info">
                     <h4>TOTAL SALES</h4>
-                    <p>1,291,922</p>    
+                    <p>0</p>    
                 </div>
                 <div class="stats-link">
                     <a href="javascript:;">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
@@ -86,7 +86,7 @@
                 <div class="stats-icon"><i class="fa fa-clock"></i></div>
                 <div class="stats-info">
                     <h4>TOTAL PAYOUT</h4>
-                    <p>00:12:23</p> 
+                    <p>0</p> 
                 </div>
                 <div class="stats-link">
                     <a href="javascript:;">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>

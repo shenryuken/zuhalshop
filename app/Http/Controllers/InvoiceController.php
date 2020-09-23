@@ -3,29 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Billing\PaymentGatewayContract;
+
+use App\Models\Invoice;
 
 class InvoiceController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware(['auth','verified']);
-    }
-
     public function index()
     {
-    	$data = Invoice::paginate(15);
+    	$data = Invoice::all();
 
     	return view('invoices.index', compact('data'));
     }
 
-    public function checkout()
+    public function show($id)
     {
-        return view('invoices.checkout');
+    	$data = Invoice::find($id);
+
+    	return view('invoices.show', compact('data'));
     }
 }

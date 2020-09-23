@@ -29,7 +29,7 @@
 	                </ul>
 	            </div>
 	        @endif
-		    <form method="Post" action="{{route('products')}}" enctype="multipart/form-data">
+		    <form method="Post" action="{{url('products')}}" enctype="multipart/form-data">
 		    	@csrf
 		    	<fieldset>
 		    		<legend class="m-b-10">Add Product</legend>

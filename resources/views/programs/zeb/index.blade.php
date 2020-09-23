@@ -46,6 +46,11 @@
                 {!! session('success') !!}
             </div>
         @endif
+        @if(session('failed'))
+            <div class="alert alert-warning">
+                {!! session('failed') !!}
+            </div>
+        @endif
 
         <br>
         <a href="{{url('programs/zeb/create-node')}}" class="btn btn-sm btn-primary">Create Node (Testing Purpose)</a>
@@ -86,7 +91,7 @@
                     <td>
                         <button onclick="window.location='{{ url("programs/zeb/".$row->id."/create-child") }}'" class="m-5 btn-sm btn-gray">Create Child</button>
                         <button onclick="window.location='{{ url("programs/zeb/".$row->id) }}'" class="m-5 btn-sm btn-gray">Show</button>
-                        <button onclick="window.location='{{ url("programs/zeb/checkAncestors/".$row->id) }}'" class="m-5 btn-sm btn-gray">Check</button>
+                        <button onclick="window.location='{{ url("programs/zeb/checkAncestors2/".$row->id) }}'" class="m-5 btn-sm btn-gray">Check</button>
                     </td>
                     {{-- <td class="row pl-5">
                         <button onclick="window.location='{{ url("products/".$row->id) }}'" class="m-5 btn-sm btn-gray">Show</button>

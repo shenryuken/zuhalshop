@@ -34,9 +34,9 @@ class BankController extends Controller
     public function store(Request $request)
     {
     	$request->validate([
-    		'name' => 'required',
-    		'short_code' => 'required',
-    		'country_id' => 'required',
+    		'name'        => 'required',
+    		'short_code'  => 'required',
+    		'country_id'  => 'required',
     	]);
 
     	if($request->country_id == 132)
@@ -68,9 +68,9 @@ class BankController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required',
-            'short_code' => 'required',
-            'country_id' => 'required',
+            'name'          => 'required',
+            'short_code'    => 'required',
+            'country_id'    => 'required',
         ]);
 
         if($request->country_id == 132)
@@ -81,14 +81,14 @@ class BankController extends Controller
         }
 
 
-        $bank = new Bank;
+        $bank = Bank::find($id);
         $bank->name         = $request->name;
         $bank->short_code   = $request->short_code;
         $bank->status       = $status;
         $bank->country_id   = $request->country_id;
         $bank->save();
 
-        return redirect()->to('banks');
+        return redirect()->to('banks')->with('success', 'Successfully updated!');;
     }
 
     public function destroy($id)

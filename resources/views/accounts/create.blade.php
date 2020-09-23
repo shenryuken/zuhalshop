@@ -26,8 +26,9 @@
         </div>
         
         <div class="col-lg-8 order-lg-1 personal-info">
-            <form role="form" action="{{url('profiles/account')}}" enctype="multipart/form-data" method="Post">
+            <form role="form" action="{{url('accounts')}}" enctype="multipart/form-data" method="Post">
                 @csrf
+                <input type="hidden" name="user_id" value="{{Auth::id()}}">
                 <div class="form-group row">
                     <label class="col-lg-3 col-form-label form-control-label">Holder Name</label>
                     <div class="col-lg-9">

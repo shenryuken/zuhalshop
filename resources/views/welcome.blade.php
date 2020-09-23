@@ -523,7 +523,7 @@
                         </div>
                             <div class="pricing-bottom">
                             <span class="pricing-dollar">RM200</span>
-                                <a href="{{url('products/1/promo')}}" class="section-btn pricing-btn">Buy</a>
+                                <a href="{{url('register')}}" class="section-btn pricing-btn">Buy</a>
                             </div>
                         </div>
                 </div>
@@ -550,7 +550,7 @@
                         </div>
                         <div class="pricing-bottom">
                             <span class="pricing-dollar">RM540</span>
-                            <a href="{{url('products/2/promo')}}"   class="section-btn pricing-btn btn disabled">Buy</a>
+                            <a href="{{url('register')}}"   class="section-btn pricing-btn btn disabled">Buy</a>
                         </div>
                     </div>
                 </div>
@@ -577,7 +577,7 @@
                         </div>
                         <div class="pricing-bottom">
                             <span class="pricing-dollar">RM1260</span>
-                            <a href="{{url('products/3/promo')}}" class="section-btn pricing-btn btn">Buy</a>
+                            <a href="{{url('register')}}" class="section-btn pricing-btn btn">Buy</a>
                         </div>
                     </div>
                 </div>
@@ -597,14 +597,13 @@
                         </div>
                         <div class="pricing-info">
                             <p>LIFE PAckage</p>
-                            <p>50 Bottles Zuhal</p>
                             <p>Promotion link</p>
                             <p><hr></p>
-                            <p>Reseller</p>
+                            <p>Partner</p>
                         </div>
                         <div class="pricing-bottom">
-                            <span class="pricing-dollar">RM5000</span>
-                            <a href="{{url('products/4/promo')}}" class="section-btn pricing-btn">Buy</a>
+                            <span class="pricing-dollar">RM3000</span>
+                            <a href="{{url('register')}}" class="section-btn pricing-btn">Buy</a>
                         </div>
                     </div>
                 </div>

@@ -21,7 +21,7 @@
 
 <div class="panel panel-inverse">
     <div class="panel-heading">
-        <h4 class="panel-title">Banks</h4>
+        <h4 class="panel-title">Invoices</h4>
         <div class="panel-heading-btn">
             <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
             <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>
@@ -41,9 +41,14 @@
                 </ul>
             </div>
         @endif
+        @if(session('success'))
+            <div class="alert alert-success">
+                {!! session('success') !!}
+            </div>
+        @endif
 
         <br>
-        <a href="{{url('banks/create')}}" class="btn btn-primary">Add Bank</a>
+        {{-- <a href="{{url('products/create')}}" class="btn btn-primary">Add Product</a> --}}
         <hr>
         <br>
 
@@ -52,10 +57,10 @@
             <thead class="thead-dark">
                 <tr>
                     <th width="1%">NO</th>
-                    <th>NAME</th>
-                    <th>SHORTCODE</th>
+                    <th>INVOICE NO</th>
+                    <th>DATE</th>
                     <th>STATUS</th>
-                    <th>COUNTRY</th>
+                    <th>AMOUNT</th>
                     <th>ACTION</th>
                 </tr>
             </thead>
@@ -67,14 +72,19 @@
                 <tr class="even gradeC">
                 @endif
                     <td>{{$loop->index + 1}}</td>
-                    <td>{{$row->name}}</td>
-                    <td>{{$row->short_code}}</td>
+                    <td>{{$row->inv_no}}</td>
+                    <td>{{$row->created_at}}</td>
                     <td>{{$row->status}}</td>
-                    <td>{{$row->country->name}}</td>
-                    <td>
-                        {{-- <button onclick="window.location='{{ url("profiles/".$row->id) }}'" class="btn-sm btn-gray">Show</button>
-                        <button wire:click="edit({{$row->id}})" class="btn-sm btn-primary">Edit</button> 
-                        <button onclick="confirm('Are you sure you want to remove the user from this list?') || event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})" class="btn-sm btn-danger">Delete</button> --}}
+                    <td>{{$row->amount}}</td>
+                    <td class="row pl-5">
+                        <button onclick="window.location='{{ url("invoices/".$row->id) }}'" class="m-5 btn-sm btn-gray">Show</button>
+                        {{-- <button onclick="window.location='{{ url("products/".$row->id."/edit") }}'" class="m-5 btn-sm btn-primary">Edit</button> 
+                            
+                        <form id="delete-form" method="POST" action="{{url('products/'.$row->id)}}" class="delete-item">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
+                            <input type="submit" class="btn-sm btn-danger m-5" value="Delete">
+                        </form> --}}
                     </td>
                 </tr>
             @endforeach
@@ -120,7 +130,7 @@
 	<!-- ================== END PAGE LEVEL JS ================== -->
 
 	<script>
-	    $('.delete-user').click(function(e){
+	    $('.delete-item').click(function(e){
 	         e.preventDefault() // Don't post the form, unless confirmed
 	         if (confirm('Are you sure?')) {
 	             // Post the form

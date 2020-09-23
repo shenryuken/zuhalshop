@@ -10,11 +10,13 @@ class DropdownController extends Controller
 	public function index()
 	{
 		$countries = DB::table('countries')->pluck("name","id");
+        
 		return view('dropdown.index', compact('countries'));
 	}
     public function getCountries()
     {
     	$countries = DB::table('countries')->pluck("name","id");
+
     	return json_encode($countries);
     }
 

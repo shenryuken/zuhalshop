@@ -27,13 +27,6 @@ class ProductController extends Controller
     	return view('products.index', compact('data'));
     }
 
-    public function cards()
-    {
-        $data = Product::paginate(15);
-
-        return view('products.cards', compact('data'));
-    }
-
     public function create()
     {
     	return view('products.create');
@@ -42,15 +35,15 @@ class ProductController extends Controller
     public function store(Request $request)
     {
     	$request->validate([
-    		'name'		=> 'required',
-    		'code'		=> 'required',
-    		'sku'		=> 'required',
-    		'price'		=> 'required',
-    		'cost_price'=> 'required',
-            'paypal_code' => '',
-    		'instock'	=> '',
-    		'type'		=> 'required',
-    		'image' 	=> 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    		'name'			=> 'required',
+    		'code'			=> 'required',
+    		'sku'			=> 'required',
+    		'price'			=> 'required',
+    		'cost_price'	=> 'required',
+            'paypal_code' 	=> '',
+    		'instock'		=> '',
+    		'type'			=> 'required',
+    		'image' 		=> 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
     	]);
 
     	//upload image
@@ -59,15 +52,15 @@ class ProductController extends Controller
         }
 
     	$product = new Product;
-    	$product->name 	= $request->name;
-    	$product->code 	= $request->code;
-    	$product->sku 	= $request->sku;
-    	$product->price = $request->price;
-    	$product->cost_price = $request->cost_price;
-        $product->paypal_code= $request->paypal_code;
-    	$product->instock 	 = $request->instock;
-    	$product->type 	= $request->type;
-    	$product->image = $path;
+    	$product->name 			= $request->name;
+    	$product->code 			= $request->code;
+    	$product->sku 			= $request->sku;
+    	$product->price 		= $request->price;
+    	$product->cost_price 	= $request->cost_price;
+        $product->paypal_code	= $request->paypal_code;
+    	$product->instock 	 	= $request->instock;
+    	$product->type 			= $request->type;
+    	$product->image 		= $path;
     	$product->save();
 
         return redirect()->to('products')->with('success', 'Successfully add new product');
@@ -83,15 +76,15 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
     	$request->validate([
-            'name'      => 'required',
-            'code'      => 'required',
-            'sku'       => 'required',
-            'price'     => 'required',
-            'cost_price'=> 'required',
-            'paypal_code' => '',
-            'instock'   => '',
-            'type'      => 'required',
-            'image'     => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'name'      	=> 'required',
+            'code'      	=> 'required',
+            'sku'       	=> 'required',
+            'price'     	=> 'required',
+            'cost_price'	=> 'required',
+            'paypal_code' 	=> '',
+            'instock'   	=> '',
+            'type'      	=> 'required',
+            'image'     	=> 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $product = Product::find($id);
@@ -110,42 +103,18 @@ class ProductController extends Controller
             $path = $product->image;
         }
 
-        $product->name  = $request->name;
-        $product->code  = $request->code;
-        $product->sku   = $request->sku;
-        $product->price = $request->price;
-        $product->cost_price = $request->cost_price;
-        $product->paypal_code= $request->paypal_code;
-        $product->instock    = $request->instock;
-        $product->type  = $request->type;
-        $product->image = $path;
+        $product->name  		= $request->name;
+        $product->code  		= $request->code;
+        $product->sku   		= $request->sku;
+        $product->price 		= $request->price;
+        $product->cost_price 	= $request->cost_price;
+        $product->paypal_code	= $request->paypal_code;
+        $product->instock    	= $request->instock;
+        $product->type  		= $request->type;
+        $product->image 		= $path;
         $product->save();
 
         return redirect()->to('products')->with('success', 'Successfully update!');
-    }
-
-    public function buyNow($id)
-    {
-        $product = Product::find($id);
-        //dd($product);
-
-        return view('products/buynow', compact('product'));
-    }
-
-    public function promolink($id, $ref = null)
-    {
-        $product = Product::find($id);
-        
-        // if($ref)
-        // {
-        //     $referrer = User::where('username', $ref)->first();
-
-        //     $bonus_sale = $product->price * 0.1;
-
-        //     $wallet = Wallet::where('user_id', $referrer->id)->first()
-        // }
-
-        return view('products.promolink', compact('product', 'ref'));
     }
 
     public function show($id)

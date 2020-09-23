@@ -30,6 +30,7 @@ class AccountController extends Controller
     public function store(Request $request)
     {
     	$request->validate([
+    		'user_id'     => 'required|unique:accounts,user_id,'. $request->user_id,
     		'holder_name' => 'required',
     		'acc_no'	  => 'required',
     		'bank_id'	  => 'required',
@@ -44,4 +45,38 @@ class AccountController extends Controller
 
     	return redirect()->back();
     }
+
+    public function edit($id)
+    {
+    	$account = Account::find($id);
+
+    	return view('accounts.edit', compact('account'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required',
+            'short_code' => 'required',
+            'country_id' => 'required',
+        ]);
+
+        if($request->country_id == 132)
+        {
+            $status = 'Local';
+        } else {
+            $status = 'International';
+        }
+
+
+        $bank = new Bank;
+        $bank->name         = $request->name;
+        $bank->short_code   = $request->short_code;
+        $bank->status       = $status;
+        $bank->country_id   = $request->country_id;
+        $bank->save();
+
+        return redirect()->to('banks');
+    }
 }
+
